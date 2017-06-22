@@ -122,7 +122,11 @@ class LiteIPTV {
         }
         return out
       }))
-      .then(channels => !m3u ? channels : channels.map(channel => `#EXTINF:-1,${channel.channel ? channel.id + ' ' + channel.channel : channel.id}\n${channel.url}`).join('\n'))
+      .then(channels => !m3u ? channels : LiteIPTV.categoryToM3u(channels))
+  }
+
+  static categoryToM3u (channels) {
+    return new Promise((resolve, reject) => resolve(channels.map(channel => `#EXTINF:-1,${channel.channel ? channel.id + ' ' + channel.channel : channel.id}\n${channel.url}`).join('\n')))
   }
 }
 
