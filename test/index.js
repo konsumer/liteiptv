@@ -2,8 +2,6 @@
 import { expect } from 'chai'
 import LiteIPTV from '../src/index'
 
-require('better-log/install')
-
 if (!process.env.LITEIPTV_USER || !process.env.LITEIPTV_PASSWORD) {
   console.log('You need to set these environment variables: LITEIPTV_USER, LITEIPTV_PASSWORD')
   process.exit(1)
@@ -32,6 +30,12 @@ describe('LiteIPTV', () => {
   it('should be able to get all live-streams in ENGLISH', () => lite.category(4)
     .then(streams => {
       expect(streams.length).to.be.gt(10)
+    })
+  )
+
+  it('should be able to make a live-stream ENGLISH m3u', () => lite.category(4, true, true)
+    .then(m3u => {
+      expect(m3u.length).to.be.gt(100)
     })
   )
 })

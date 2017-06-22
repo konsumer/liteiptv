@@ -95,12 +95,13 @@ class LiteIPTV {
    * Get the streams for a category
    * @param  {number} id   The id from `categories()`
    * @param {boolean} live Live or video-on-demand?
+   * @param {boolean} m3u  Return an M3U playlist for this stream list?
    * @return {Promise} Resolves to a list of streams
    * @example
    * liteiptv.category()
    *   .then(streams => console.log(streams))
    */
-  category (id, live = true) {
+  category (id, live = true, m3u = false) {
     const type = live ? 'live' : 'vod'
     return this.getXML(`${config.urls.channel}&type=get_${type}_streams&cat_id=${id}`)
       .then(x => x.items.channel.map(c => {
@@ -121,6 +122,7 @@ class LiteIPTV {
         }
         return out
       }))
+      .then(channels => !m3u ? channels : channels.map(channel => `#EXTINF:-1,${channel.channel ? channel.id + ' ' + channel.channel : channel.id}\n${channel.url}`).join('\n'))
   }
 }
 
