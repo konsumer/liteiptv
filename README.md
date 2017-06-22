@@ -43,7 +43,7 @@ Get the streams for a category
 
 **Example**:
 ```js
-liteiptv.category()
+liteiptv.category(4)
   .then(streams => console.log(streams))
 ```
 

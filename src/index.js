@@ -98,7 +98,7 @@ class LiteIPTV {
    * @param {boolean} m3u  Return an M3U playlist for this stream list?
    * @return {Promise} Resolves to a list of streams
    * @example
-   * liteiptv.category()
+   * liteiptv.category(4)
    *   .then(streams => console.log(streams))
    */
   category (id, live = true, m3u = false) {
