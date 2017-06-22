@@ -125,8 +125,13 @@ class LiteIPTV {
       .then(channels => !m3u ? channels : LiteIPTV.categoryToM3u(channels))
   }
 
+  /**
+   * Generate an M3U playlist for the output of `category()`
+   * @param  {object} channels The output from `category()`
+   * @return {string} M3U playlist
+   */
   static categoryToM3u (channels) {
-    return new Promise((resolve, reject) => resolve(channels.map(channel => `#EXTINF:-1,${channel.channel ? channel.id + ' ' + channel.channel : channel.id}\n${channel.url}`).join('\n')))
+    return channels.map(channel => `#EXTINF:-1,${channel.channel ? channel.id + ' ' + channel.channel : channel.id}\n${channel.url}`).join('\n')
   }
 }
 

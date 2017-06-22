@@ -43,9 +43,7 @@ describe('LiteIPTV', () => {
     })
   )
 
-  it('should be able to generate an m3u from output from category(4)', () => LiteIPTV.categoryToM3u(categories)
-    .then(m3u => {
-      console.log(m3u)
-    })
-  )
+  it('should be able to generate an m3u from output from live-streams in ENGLISH', () => {
+    expect(LiteIPTV.categoryToM3u(categories).length).to.be.gt(100)
+  })
 })
