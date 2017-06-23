@@ -1,6 +1,18 @@
-import fetch from 'isomorphic-fetch'
+/* global fetch atob */
+
 import { parseString } from 'xml2js'
-import atob from 'atob'
+
+if (!Promise) {
+  require('es6-promise').polyfill()
+}
+
+if (!fetch) {
+  require('isomorphic-fetch')
+}
+
+if (!atob) {
+  const atob = require('atob')
+}
 
 export const config = {
   base: 'http://ok2.se:8000',
