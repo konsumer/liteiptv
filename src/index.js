@@ -2,16 +2,16 @@
 
 import { parseString } from 'xml2js'
 
-if (!Promise) {
+if (typeof Promise === 'undefined') {
   require('es6-promise').polyfill()
 }
 
-if (!fetch) {
+if (typeof fetch === 'undefined') {
   require('isomorphic-fetch')
 }
 
-if (!atob) {
-  const atob = require('atob')
+if (typeof atob === 'undefined') {
+  global.atob = require('atob')
 }
 
 export const config = {
