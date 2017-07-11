@@ -1,6 +1,6 @@
 {
   "name": "liteiptv",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Node interface for liteiptv",
   "main": "index.js",
   "scripts": {
