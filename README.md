@@ -5,10 +5,17 @@ Install in your project with `npm i -S liteiptv`
 
 ## Class: LiteIPTV
 
+
+### LiteIPTV.panel() 
+
+Get all info at once
+
+**Returns**: `Promise`, Resolves to a large object with all your info
+
 **Example**:
 ```js
-import LiteIPTV from 'liteiptv'
-const liteiptv = new LiteIPTV('USERNAME', 'PASSWORD')
+liteiptv.panel()
+  .then(info => console.log(info))
 ```
 
 ### LiteIPTV.categories(live) 
@@ -47,26 +54,22 @@ liteiptv.category(4)
   .then(streams => console.log(streams))
 ```
 
+### LiteIPTV.epg(id) 
+
+Get all available EPG records for a stream
+
+**Parameters**
+
+**id**: `Number`, stream_id to get EPG for
+
+**Returns**: `Promise`, Resolves to EPG data about a single stream
+
 ### LiteIPTV.categoryToM3u(channels) 
 
-Generate an M3U playlist for the output of `category()` if you are cacheing your output.
-
-This is great
+Generate an M3U playlist for the output of `category()`
 
 **Parameters**
 
 **channels**: `object`, The output from `category()`
 
 **Returns**: `string`, M3U playlist
-
-### LiteIPTV.panel() 
-
-Get all info at once. This is a built-in endpoint that is useful if you want to grab all the data at once.
-
-**Returns**: `Promise`, Resolves to a large object with all your info
-
-**Example**:
-```js
-liteiptv.panel()
-  .then(info => console.log(info))
-```

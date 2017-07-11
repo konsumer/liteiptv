@@ -20,7 +20,7 @@ export const config = {
     categories: '/enigma2.php?username=%user&password=%pass',
     panel: '/panel_api.php?username=%user&password=%pass',
     channel: '/enigma2.php?username=%user&password=%pass&type=get_vod_streams&cat_id=',
-    epg: '/streaming/timeshift.php?username=%user&password=%pass&action=get_epg&stream_id='
+    epg: 'player_api.php?username=%user&password=%pass&action=get_simple_data_table&stream_id='
   },
   titleRegex: /(.+) \[([0-9]{2}:[0-9]{2}) - ([0-9]{2}:[0-9]{2})\] \+ -.+ {2}(.+)/
 }
@@ -135,6 +135,15 @@ class LiteIPTV {
         return out
       }))
       .then(channels => !m3u ? channels : LiteIPTV.categoryToM3u(channels))
+  }
+
+  /**
+   * Get all available EPG records for a stream
+   * @param  {Number} id stream_id to get EPG for
+   * @return {Promise}   Resolves to EPG data about a single stream
+   */
+  epg (id) {
+    return this.getJSON(`${config.urls.epg}${id}`)
   }
 
   /**
