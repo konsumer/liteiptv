@@ -20,7 +20,7 @@ export const config = {
     categories: '/enigma2.php?username=%user&password=%pass',
     panel: '/panel_api.php?username=%user&password=%pass',
     channel: '/enigma2.php?username=%user&password=%pass&type=get_vod_streams&cat_id=',
-    epg: 'player_api.php?username=%user&password=%pass&action=get_simple_data_table&stream_id='
+    epg: '/player_api.php?username=%user&password=%pass&action=get_simple_data_table&stream_id='
   },
   titleRegex: /(.+) \[([0-9]{2}:[0-9]{2}) - ([0-9]{2}:[0-9]{2})\] \+ -.+ {2}(.+)/
 }
